@@ -61,8 +61,8 @@ options:
 # Examples:
 **1.** en utilisant le script pour faire un traceroute vers google dns 8.8.8.8, aussi générer un graphe et un txt de sortie
 a. output
-<img src="./images/traceroute-g-o-stdout.png" alt="" style="height: 100px; width:100px;"/>
-<img src="./images/traceroute-g-o-txt_image.png" alt="" style="height: 100px; width:100px;"/>
+![alt text for screen readers](./images/traceroute-g-o-stdout.png "")
+![alt text for screen readers](./images/traceroute-g-o-txt_image.png "")
 
 b. graph
 <img src="./images/traceroute-g-o-graph.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
@@ -155,8 +155,11 @@ def read_ips_from_file(filename):
     return ips
 ```
 1- Cette fonction prend en entrée un nom de fichier (filename) et lit les adresses IP à partir de ce fichier.
+
 2- Tout d'abord, la fonction vérifie si le fichier existe et est un fichier valide en utilisant la méthode os.path.exists() et os.path.isfile(). Si le fichier n'existe pas ou n'est pas valide, la fonction affiche un message d'erreur et quitte.
+
 3- Si le fichier est valide, la fonction vérifie son extension, si l'extension est ".txt", la fonction lit chaque ligne du fichier à l'aide de la méthode open() et la méthode read() qui lit tout le contenu du fichier, Si l'extension est ".csv", la fonction utilise la méthode csv.reader() pour lire chaque ligne du fichier CSV, Les adresses IP sont ensuite extraites stockées dans une liste.
+
 4- La fonction renvoie ensuite la liste des adresses IP.
 
 **check_ip_valide**
@@ -273,7 +276,9 @@ def generate_output_file_hostname_available(self, hops, destination,sender_addre
             file.write(line)
 ```
 1- Cette méthode `generate_output_file_hostname_available` permet de générer un fichier de sortie si l'hôte de destination est disponible pour une certaine étape du traceroute.
+
 2- La méthode utilise ces arguments pour construire une ligne de texte qui sera écrite dans le fichier de sortie. La ligne contient le numéro de ttl, le nom d'hôte et l'adresse IP de l'expéditeur, ainsi que le ttl mesurés pour chaque requête envoyée.
+
 3- Le nom du fichier de sortie est généré à partir de l'adresse IP de destination du traceroute.
 
 **generate_output_file_hostname_not_available**
@@ -295,6 +300,7 @@ def delete_file(self, destination):
         else: pass
 ```
 1- La fonction delete_file prend un argument destination qui correspond au nom du fichier à supprimer. Si le fichier existe, la fonction utilise la fonction os.remove pour le supprimer.
+
 2- Cette fonction est appelée à chaque fois que le script est exécuté, afin d'éviter tout conflit entre les sorties.
 
 **generate_graph**
@@ -343,9 +349,13 @@ def generate_graph(self, output_dict, destination):
 ```
 
 1- une méthode qui génère un graphique de sortie de la commande traceroute pour une destination donnée. La méthode prend deux arguments:
+
 2- output_dict: un dictionnaire avec les adresses IP comme clés et les tuples de nom d'hôte et de délai comme valeurs. C'est la sortie de la méthode traceroute. 
+
 3- destination: l'adresse IP ou le nom d'hôte de la destination. La méthode crée un nouvel objet de graphique de réseau G et ajoute des nœuds au graphique pour chaque adresse IP dans le output_dict. 
+
 4- Elle ajoute également des arêtes au graphique entre les nœuds adjacents dans le output_dict. La méthode utilise la fonction spring_layout de networkx pour déterminer les positions des nœuds, puis elle utilise matplotlib pour dessiner le graphique et le sauvegarder en tant que fichier PNG. La méthode affiche également le graphique en utilisant la fonction show() de matplotlib.
+
 5- Les nœuds dans le graphique sont colorés en vert s'ils correspondent au premier saut, en gris sinon, et en rouge pour le dernier saut. Les étiquettes des nœuds contiennent les informations d'adresse IP et de nom d'hôte. Les arêtes dans le graphique sont étiquetées avec le délai entre les nœuds source et destination, ou avec un point d'exclamation si le délai est inconnu.
 
 **run_ipv4**
@@ -424,12 +434,19 @@ def run_ipv4(self):
             pass
 ```
 1- Il s'agit d'une méthode qui exécute un traceroute vers une destination donnée en utilisant le protocole UDP, TCP ou ICMP, en fonction de l'argument de l'utilisateur "ceci utilisera les fonctions que nous avons décrites ci-dessus". La méthode ne prend aucun argument. Elle crée un dictionnaire appelé output_dict qui stocke les adresses IP, les noms d'hôtes et les délais pour chaque saut dans le traceroute. La méthode supprime également tout fichier de sortie existant pour la destination, puis entre dans une boucle while qui exécute le traceroute.
+
 2- La fonction enverra un certain nombre de paquets en utilisant la boucle for le nombre de paquets "nqueries" spécifié par l'utilisateur.
+
 3- Dans la boucle while, la méthode incrémente le nombre de sauts.
+
 4- Si l'utilisateur spécifie de résoudre les noms DNS, la méthode tente d'obtenir le nom d'hôte associé à l'adresse expéditeur pour chaque adresse IP de la liste ips. Si un nom d'hôte est obtenu, la méthode calcule le délai moyen pour toutes les requêtes et stocke l'adresse IP, le nom d'hôte et le délai moyen dans le fichier output_dict. Si aucun nom d'hôte n'est obtenu, la méthode ne stocke que l'adresse IP et le délai moyen. Si l'utilisateur spécifie de ne pas résoudre les noms DNS, la méthode ne stocke que l'adresse IP et le délai moyen.
+
 5- La méthode vérifie ensuite si l'adresse de l'expéditeur est '*', ce qui indique que la requête n'a pas abouti. Si c'est le cas, la méthode stocke les sauts et une chaîne vide dans output_dict pour ce saut. Dans le cas contraire, la méthode affiche le numéro de saut, le nom d'hôte (s'il a été obtenu) et l'adresse IP, suivis du délai pour chaque requête. La méthode génère ensuite un fichier de sortie à l'aide de la fonction dont nous avons parlé `generate_output_file_hostname_available`.
+
 6- Si l'adresse expéditeur est ''*'', la méthode affiche le numéro de saut suivi du caractère * pour le nombre de requêtes effectuées. La méthode génère ensuite un fichier de sortie à l'aide de la fonction `generate_output_file_hostname_not_available`
+
 7- La méthode vérifie ensuite si l'adresse expéditeur est égale à l'adresse IP de la destination ou si le nombre maximal de sauts a été atteint. Si l'une de ces conditions est remplie, la boucle while est quittée.
+
 8- Si l'utilisateur spécifie de générer un graphique, la méthode appelle la méthode ```generate_graph()``` avec le output_dict et la destination comme arguments. Sinon, elle ne fait rien.
 
 **E. **
@@ -451,4 +468,5 @@ try:
         exit(0)
 ```
 1- Dans cette section, le programme vérifie si l'argument de fichier fourni est une adresse IP valide. Si c'est le cas, le programme effectue une commande traceroute sur l'adresse IP spécifiée. Sinon, le programme lit les adresses IP à partir du fichier et exécute une commande traceroute sur chacune des adresses IP.
+
 2- Le programme utilise la classe Traceroute pour effectuer la commande traceroute, en utilisant les arguments en ligne de commande fournis.
