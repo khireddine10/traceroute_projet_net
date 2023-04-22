@@ -61,40 +61,59 @@ options:
 # Examples:
 **1.** en utilisant le script pour faire un traceroute vers google dns 8.8.8.8, aussi générer un graphe et un txt de sortie
 a. output
+
 ![alt text for screen readers](./images/traceroute-g-o-stdout.png "")
 ![alt text for screen readers](./images/traceroute-g-o-txt_image.png "")
 
 b. graph
-<img src="./images/traceroute-g-o-graph.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
+![alt text for screen readers](./images/traceroute-g-o-graph.png "")
 
 c. output image
-<img src="./images/traceroute-g-o-image.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
+![alt text for screen readers](./images/traceroute-g-o-image.png "")
 
 d. output fichier
-<img src="./images/traceroute-g-o-txt.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
+![alt text for screen readers](./images/traceroute-g-o-txt.png "")
 
 **2** en utilisant le script pour faire un traceroute vers group des host a partir d'un fichier
 a. output
-<img src="./images/traceroute-file-stdout.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
 
-b. 
-<img src="./images/traceroute-file-output.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+![alt text for screen readers](./images/traceroute-file-stdout.png "")
+
+b.
+
+![alt text for screen readers](./images/traceroute-file-output.png "")
 
 **3** l'utilisation de protocol tcp avec changement de port de destination
-<img src="./images/traceroute-tcp-output.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
+![alt text for screen readers](./images/traceroute-tcp-output.png "")
 
 **4** l'utilisation de protocol icmp
-<img src="./images/traceroute-icmp-output.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
+![alt text for screen readers](./images/traceroute-icmp-output.png "")
 
 **5**  désactiver la résolution dns 
 a. output
-<img src="./images/traceroute-no-dns-output.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
+![alt text for screen readers](./images/traceroute-no-dns-output.png "")
 
 b. graph
-<img src="./images/traceroute-no-dns-graph.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
+![alt text for screen readers](./images/traceroute-no-dns-graph.png "")
 
 **6** modifier la longueur du paquet
-<img src="./images/traceroute-payload-output.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
+![alt text for screen readers](./images/traceroute-payload-output.png "")
+
+**7** teste le fichier binaire linux
+
+![alt text for screen readers](./images/traceroute-file-linux.png "")
+
+**8** teste le fichier binaire windows
+
+![alt text for screen readers](./images/traceroute-file-windows.png "")
 
 # la structure de  code
 **A. imports**
@@ -470,3 +489,4 @@ try:
 1- Dans cette section, le programme vérifie si l'argument de fichier fourni est une adresse IP valide. Si c'est le cas, le programme effectue une commande traceroute sur l'adresse IP spécifiée. Sinon, le programme lit les adresses IP à partir du fichier et exécute une commande traceroute sur chacune des adresses IP.
 
 2- Le programme utilise la classe Traceroute pour effectuer la commande traceroute, en utilisant les arguments en ligne de commande fournis.
+
